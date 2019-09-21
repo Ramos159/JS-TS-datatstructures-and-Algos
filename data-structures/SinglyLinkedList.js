@@ -27,35 +27,58 @@ export default class SinglyLinkedList{
         }
     }
 
-    removeHead = () =>{
+    removeHead = (params) =>{
+
+        if(params){
+            throw new Error("Function does not take parameters")
+        }
+
         let node = this.head
-        node.next = null
 
         this.head = this.head.next
-        this.size --
+        this.size -- 
 
+        node.next = null
         return node
     }
     //ill zero index this for now
     getNodeAtIndex(value){
+
+    /// VALIDATIONS/////////////////////////////////////////////////
+        if(value > 0){
+            throw new RangeError("Parameter can not be negative")
+        }
+        // value isn't a number
+        if(typeof value !== "number"){
+            throw new TypeError("Parameter must be a number")
+        }
+        // value wasnt passed
+        if(value == null){
+            throw new Error("Parameter can not be empty")
+        }
         if(value == 0){
             return this.head
         }
-
+        // value exceeds size
         if(value > this.size-1){
-            throw new RangeError("Error: value paramater exceeds list length")
+            throw new RangeError("value paramater exceeds list length")
         }
-        else{
-            let node = this.head.next
+    ////////////////////////////////////////////////////////////////
 
-            for(let i = 1;i == value;i++){
-                node = node.next
-            }
-            return node
+        let node = this.head.next
+
+        for(let i = 1;i == value;i++){
+            node = node.next
         }
+        return node
     }
     //debug tool
-    printList(){
+    printList(params){
+
+        if(params){
+            throw new Error("Function does not take parameters")
+        }
+
         let node = this.head
 
         for(let i = 0;i<this.size;i++){
