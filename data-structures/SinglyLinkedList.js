@@ -2,30 +2,19 @@ import _SingleListNode from "./SingleListNode"
 
 export default class SinglyLinkedList{
     // code direction questions:
-    // should remove methods return the nodes they remove? 
-    // should i add a tail?
+    // should remove methods return the nodes they remove?
     // should linkedlists be zero index? 
     constructor(){
         this.head = null
+        this.tail = null
         this.size = 0
     }
 
     addNodeToEnd = (value) =>{
-
         const node = new _SingleListNode(value)
-
-        if(this.head){
-            let currentNode = this.head
-
-            while(currentNode.next != null){
-                currentNode = currentNode.next
-            }
-            currentNode.next = node
-            this.size ++
-        }
-        else{
-            this.addNodeToFront(value)
-        }
+        this.tail.next = node
+        this.tail = node
+        this.size++
     }
 
     addNodeToFront = (value) => {
@@ -34,8 +23,8 @@ export default class SinglyLinkedList{
         this.head = node
         this.size++
     }
-    removeHead = (params) => {
 
+    removeHead = (params) => {
         if(params){
             throw new Error("Function does not take parameters")
         }
@@ -43,14 +32,33 @@ export default class SinglyLinkedList{
         let node = this.head
 
         this.head = this.head.next
-        this.size -- 
-
+        this.size-- 
         node.next = null
+
         return node
+    }
+
+    removeTail(){
+        if(params){
+            throw new Error("Function does not take parameters")
+        }
+
+        let newTail = this.head
+        let shouldBeTail = this.head.next
+
+        while(shouldBeTail.next != null){
+            newTail = newTail.next
+            shouldBeTail = newTail.next
+        }
+
+        newTail.next = null
+        this.tail = newTail
+        this.size--
+
+        return shouldBeTail
     }
     // ill zero index this for now
     getNodeAtIndex = (value) => {
-
         this._validateNumberParam(value)
 
         let node = this.head
@@ -58,11 +66,11 @@ export default class SinglyLinkedList{
         for(let i = 0;i < value;i++){
             node = node.next
         }
+
         return node
     }
     // private method used to validate number params
     _validateNumberParam = (number) => {
-
         if(number < 0){
             throw new RangeError("Parameter can not be a negative number")
         }
@@ -81,7 +89,6 @@ export default class SinglyLinkedList{
     }
     // debug tool
     printList = (params) => {
-
         if(params){
             throw new Error("Function does not take parameters")
         }
@@ -97,11 +104,13 @@ export default class SinglyLinkedList{
     }
 
     removeNodeAtIndex = (index) => {
-
         this._validateNumberParam(index)
         
         if(index == 0){
             this.removeHead()
+        }
+        else if(index == this.size-1){
+            this.removeTail()
         }
         else{
             // previousNode always first item in list 
@@ -116,11 +125,12 @@ export default class SinglyLinkedList{
                  currentNode =  currentNode.next
                  nextNode = nextNode.next
             }
+            
             previousNode.next = nextNode
             currentNode.next = null
             this.size --
-            return currentNode
 
+            return currentNode
         }
     }
 }
