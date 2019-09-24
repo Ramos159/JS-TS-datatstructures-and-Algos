@@ -125,7 +125,7 @@ export default class SinglyLinkedList{
                  currentNode =  currentNode.next
                  nextNode = nextNode.next
             }
-            
+
             previousNode.next = nextNode
             currentNode.next = null
             this.size --
