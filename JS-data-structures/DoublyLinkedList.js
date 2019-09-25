@@ -137,3 +137,6 @@ export default class DoublyLinkedList{
         }
     }
 }
+
+
+(1, (2, (3, (2, None, None), None), (6, None, None)), (3, (3, None, None), (1, (5, None, None), (6, None, None))))
