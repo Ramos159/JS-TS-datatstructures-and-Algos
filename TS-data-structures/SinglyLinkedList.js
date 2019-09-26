@@ -61,16 +61,29 @@ var SinglyLinkedList = /** @class */ (function () {
                 return node;
             }
             else {
+                var oldTail = _this.head.next;
                 var newTail = _this.head;
-                var tail = _this.head.next;
-                while (tail.next != null) {
-                    tail = tail.next;
-                    newTail = tail.next;
+                while (oldTail.next != null) {
+                    newTail = oldTail;
+                    oldTail = oldTail.next;
                 }
-                newTail.next = null;
                 _this.tail = newTail;
+                newTail.next = null;
                 _this.size--;
-                return tail;
+                return oldTail;
+            }
+        };
+        this.getFirstNode = function (params) {
+            return _this.head;
+        };
+        this.getLastNode = function (params) {
+            return _this.tail;
+        };
+        this.getNodeAtIndex = function (index) {
+        };
+        this.removeNodeAtIndex = function (index) {
+            if (index < 0) {
+                throw new RangeError("Index parameter can not be negative");
             }
         };
         this.head = null;
