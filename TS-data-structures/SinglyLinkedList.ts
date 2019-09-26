@@ -2,9 +2,9 @@ import SingleListNode from "./SingleListNode";
 import List from "./ListInterface"
 
 export default class SinglyLinkedList implements List{
-    public head: SingleListNode
-    public tail: SingleListNode
-    public size: number
+    private head: SingleListNode | null
+    private tail: SingleListNode | null
+    private size: number
 
     constructor(){
         this.head = null
@@ -66,35 +66,51 @@ export default class SinglyLinkedList implements List{
         }
     }
 
-    removeLastNode = (params: void): any => {
-        if(this.size===0){
+    removeLastNode = (params: void): SingleListNode => {
+        if(this.size === 0){
             throw new Error("Can not remove last node, list is currently empty")
         }
         else if(this.size === 1){
-            const node = this.head
+            const node: SingleListNode = this.head
 
             this.head = null
             this.tail = null
-            this.size--
+            this.size --
 
             return node
         }
         else{
+            let oldTail = this.head.next
             let newTail = this.head
-            let tail = this.head.next
 
-            while(tail.next != null){
-                tail = tail.next
-                newTail = tail.next
+            while(oldTail.next != null){
+                newTail = oldTail
+                oldTail = oldTail.next
             }
-            newTail.next = null
-            this.tail = newTail
-            this.size--
 
-            return tail
+            this.tail = newTail
+            newTail.next = null
+            this.size --
+
+            return oldTail
         }
     }
-    // getNodeAtIndex(index: number): any;
-    // removeNodeAtIndex(index: number): any;
+
+    getFirstNode = (params:void): SingleListNode => {
+        return this.head
+    }
+
+    getLastNode = (params: void): SingleListNode => {
+        return this.tail
+    }
+
+    getNodeAtIndex = (index: number): SingleListNode => {
+        
+    }
+    removeNodeAtIndex = (index: number): SingleListNode =>{
+        if(index < 0){
+            throw new RangeError("Index parameter can not be negative")
+        }
+    }
     // printList(params: void): void;
 }
