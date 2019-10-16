@@ -1,9 +1,6 @@
 import SingleListNode from "./SingleListNode";
 
 export default interface List{
-    head: SingleListNode | null
-    tail: SingleListNode | null
-    size: number
      addToFrontOfTheList(value: any): void
      addToTheBackOfTheList(value: any): void
      removeFirstNode(params: void): SingleListNode
