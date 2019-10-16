@@ -12,6 +12,10 @@ export default class SinglyLinkedList implements List{
         this.size = 0
     }
 
+    getSize = (): number =>{
+        return this.size
+    }
+
     addToFrontOfTheList = (value: any): void =>{
         const node: SingleListNode = new SingleListNode(value);
 
@@ -27,7 +31,7 @@ export default class SinglyLinkedList implements List{
         }
     }
 
-    addToTheBackOfTheList = (value: any): void => {
+    addToBackOfTheList = (value: any): void => {
         const node = new SingleListNode(value);
 
         if(this.tail){
