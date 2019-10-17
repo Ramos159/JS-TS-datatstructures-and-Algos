@@ -150,10 +150,10 @@ describe('SinglyLinkedList',()=>{
             expect(list.getSize()).toEqual(3)
 
             node = list.removeLastNode()
-            expect(list.getSize()).toEqual(3)
+            expect(list.getSize()).toEqual(2)
             
             node = list.removeLastNode()
-            expect(list.getSize()).toEqual(3)
+            expect(list.getSize()).toEqual(1)
         })
         test('throws an error if the list is empty',()=>{
             let list: SinglyLinkedList = new SinglyLinkedList()
@@ -242,19 +242,24 @@ describe('SinglyLinkedList',()=>{
         test('increases size of list correctly',()=>{
             let list: SinglyLinkedList = new SinglyLinkedList()
             list.insertNodeAtIndex(0,40)
+            expect(list.getSize()).toEqual(1)
+
             list.insertNodeAtIndex(0,40)
             list.insertNodeAtIndex(1,40)
-            list.insertNodeAtIndex(2,40)
-            list.insertNodeAtIndex(0,40)
+            expect(list.getSize()).toEqual(3)
 
+            list.insertNodeAtIndex(2,40)
+            expect(list.getSize()).toEqual(4)
+
+            list.insertNodeAtIndex(0,40)
             expect(list.getSize()).toEqual(5)
         })
-        test('does not work when used on empty list',()=>{
+        test('works when used on empty list',()=>{
             let list: SinglyLinkedList = new SinglyLinkedList()
 
             expect(()=>{
                 list.insertNodeAtIndex(0,1)
-            }).toThrow()
+            }).not.toThrow()
         })
         test('throws error when index param goes above size of list',()=>{
             let list: SinglyLinkedList = new SinglyLinkedList()

@@ -191,15 +191,11 @@ export default class SinglyLinkedList implements List{
             throw new RangeError("Parameter can not be a negative number")
         }
         // value isn't a number
-        if(typeof number !== "number"){
+        else if(typeof number !== "number"){
             throw new TypeError("Parameter must be a number")
         }
-        // value wasnt passed
-        if(number == null){
-            throw new Error("Parameter can not be empty")
-        }
-        // value exceeds size
-        if(number > this.size-1){
+        // value exceeds size and size isn't 0,
+        else if(number > this.size-1 && this.size !== 0){
             throw new RangeError("value paramater exceeds list length")
         }
     }
