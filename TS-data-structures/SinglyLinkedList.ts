@@ -109,6 +109,9 @@ export default class SinglyLinkedList implements List{
     }
 
     getNodeAtIndex = (index: number): SingleListNode => {
+
+        this._validateNumberParam(index)
+
         if(index === 0){
             return this.head
         }
@@ -126,10 +129,10 @@ export default class SinglyLinkedList implements List{
     }
 
     removeNodeAtIndex = (index: number): SingleListNode =>{
-        if(index < 0){
-            throw new RangeError("Index parameter can not be negative")
-        }
-        else if(index == 0 ){
+
+        this._validateNumberParam(index)
+
+        if(index == 0 ){
             this.removeFirstNode()
         }
         else if(index === this.size -1){
@@ -155,6 +158,24 @@ export default class SinglyLinkedList implements List{
         for(let i = 0;i<this.size-1;i++){
             console.log(`index: ${i}`, node)
             node = node.next
+        }
+    }
+
+    _validateNumberParam = (number: number): void => {
+        if(number < 0){
+            throw new RangeError("Parameter can not be a negative number")
+        }
+        // value isn't a number
+        if(typeof number !== "number"){
+            throw new TypeError("Parameter must be a number")
+        }
+        // value wasnt passed
+        if(number == null){
+            throw new Error("Parameter can not be empty")
+        }
+        // value exceeds size
+        if(number > this.size-1){
+            throw new RangeError("value paramater exceeds list length")
         }
     }
 }
