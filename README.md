@@ -1,7 +1,7 @@
 # TS-Datastructs-and-Algos
 
 TS doesn't give me out of the box data structures and uses some sort algorithms based on engine, kinda annoying  
-this is really just for me to impliment common data structures/algos in JS for practice  
+this is really just for me to impliment common data structures/algos in TS for practice  
 if this gets extensive, i might look into just making this a library and use it myself  
 
 
