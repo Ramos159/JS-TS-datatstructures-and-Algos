@@ -153,9 +153,35 @@ export default class SinglyLinkedList implements List{
             return nodeToRemove
         }
     }
+
+    insertNodeAtIndex = (index: number,value: any): void => {
+
+        this._validateNumberParam(index)
+
+        if(index === 0){
+            this.addToFrontOfTheList(value)
+        }
+        else if(index === this.size-1){
+            this.addToBackOfTheList(value)
+        }
+        else{
+            // 0 -> 1 -> 2 -> 3 
+            const node = new SingleListNode(value)
+            let before: SingleListNode = this.head
+            let after: SingleListNode = this.head.next
+
+            for(let i = 1; i<index;i++){
+                before = before.next
+                after = after.next
+            }
+            before.next = node
+            node.next = after
+            this.size ++
+        }
+    }
     printList = (): void => {
         let node = this.head
-        for(let i = 0;i<this.size-1;i++){
+        for(let i = 0;i<this.size;i++){
             console.log(`index: ${i}`, node)
             node = node.next
         }
