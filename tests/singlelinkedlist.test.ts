@@ -1,5 +1,5 @@
-import SinglyLinkedList from '../TS-data-structures/SinglyLinkedList'
-import SingleListNode from '../TS-data-structures/SingleListNode'
+import SinglyLinkedList from '../data-structures/SinglyLinkedList'
+import SingleListNode from '../data-structures/SingleListNode'
 
 describe('SinglyLinkedList',()=>{
     describe('Intialization',()=>{
