@@ -32,8 +32,7 @@ export default class SinglyLinkedList implements List{
     }
 
     addToBackOfTheList = (value: any): void => {
-        const node = new SingleListNode(value);
-
+        const node = new SingleListNode(value)
         if(this.tail){
             this.tail.next = node
             this.tail = node
@@ -161,7 +160,7 @@ export default class SinglyLinkedList implements List{
         if(index === 0){
             this.addToFrontOfTheList(value)
         }
-        else if(index === this.size-1){
+        else if(index === this.size){
             this.addToBackOfTheList(value)
         }
         else{
