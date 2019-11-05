@@ -5,13 +5,16 @@ this is really just for me to impliment common data structures/algos in TS for p
 if this gets extensive, i might look into just making this a library and use it myself  
 
 
-## Things i plan on implimenting and testing:
+## Things i plan on implimenting and testing with Jest.js:
 
 1. ~~Singly~~/Doubly LinkedLists
 2. Basic trees, maybe one that auto balances 
 3. graphs, probably like 4 of them 
 4. Stacks and Queues
 5. Elementary sorts
-6. merge and quick sort **MAYBE**
+6. merge and quick sort
 
-## There is some unit testing being done with Jest.js in /Tests 
+## If for some weird reason you want to clone this and use it
+1. be sure to have yarn installed 
+2. run 'yarn install' to install dependencies 
+3. run 'yarn test' to see the tests in action
