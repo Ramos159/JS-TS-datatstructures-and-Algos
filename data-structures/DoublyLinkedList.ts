@@ -1,4 +1,4 @@
-import DoubleListNode from './DoublyListNode'
+import DoubleListNode from './DoubleListNode'
 import List from './ListInterface'
 
 export default class DoublyLinkedList implements List{
@@ -47,5 +47,5 @@ export default class DoublyLinkedList implements List{
     public printList = (params: void): void => {
 
     }
-    
+
 }
