@@ -6,17 +6,17 @@ export default class SinglyLinkedList implements List{
     private tail: SingleListNode | null
     private size: number
 
-    constructor(){
+    public constructor(){
         this.head = null
         this.tail = null
         this.size = 0
     }
 
-    getSize = (): number =>{
+    public getSize = (): number =>{
         return this.size
     }
 
-    addToFrontOfTheList = (value: any): void =>{
+    public addToFrontOfTheList = (value: any): void =>{
         const node: SingleListNode = new SingleListNode(value);
 
         if(this.head){
@@ -31,7 +31,7 @@ export default class SinglyLinkedList implements List{
         }
     }
 
-    addToBackOfTheList = (value: any): void => {
+    public addToBackOfTheList = (value: any): void => {
         const node = new SingleListNode(value)
         if(this.tail){
             this.tail.next = node
@@ -45,7 +45,7 @@ export default class SinglyLinkedList implements List{
         }
     }
 
-    removeFirstNode = (): SingleListNode => {
+    public removeFirstNode = (): SingleListNode => {
         if(this.size === 0){
             throw new Error("Can not remove first node, list is currently empty")
         }
@@ -69,7 +69,7 @@ export default class SinglyLinkedList implements List{
         }
     }
 
-    removeLastNode = (): SingleListNode => {
+    public removeLastNode = (): SingleListNode => {
         if(this.size === 0){
             throw new Error("Can not remove last node, list is currently empty")
         }
@@ -99,17 +99,17 @@ export default class SinglyLinkedList implements List{
         }
     }
 
-    getFirstNode = (): SingleListNode => {
+    public getFirstNode = (): SingleListNode => {
         return this.head
     }
 
-    getLastNode = (): SingleListNode => {
+    public getLastNode = (): SingleListNode => {
         return this.tail
     }
 
-    getNodeAtIndex = (index: number): SingleListNode => {
+    public getNodeAtIndex = (index: number): SingleListNode => {
 
-        this._validateNumberParam(index)
+        this.validateNumberParam(index)
 
         if(index === 0){
             return this.head
@@ -127,9 +127,9 @@ export default class SinglyLinkedList implements List{
         }
     }
 
-    removeNodeAtIndex = (index: number): SingleListNode =>{
+    public removeNodeAtIndex = (index: number): SingleListNode =>{
 
-        this._validateNumberParam(index)
+        this.validateNumberParam(index)
 
         if(index == 0 ){
             this.removeFirstNode()
@@ -153,9 +153,9 @@ export default class SinglyLinkedList implements List{
         }
     }
 
-    insertNodeAtIndex = (index: number,value: any): void => {
+    public insertNodeAtIndex = (index: number,value: any): void => {
 
-        this._validateNumberParam(index)
+        this.validateNumberParam(index)
 
         if(index === 0){
             this.addToFrontOfTheList(value)
@@ -178,7 +178,7 @@ export default class SinglyLinkedList implements List{
             this.size ++
         }
     }
-    printList = (): void => {
+    public printList = (): void => {
         let node = this.head
         for(let i = 0;i<this.size;i++){
             console.log(`index: ${i}`, node)
@@ -186,7 +186,7 @@ export default class SinglyLinkedList implements List{
         }
     }
 
-    _validateNumberParam = (number: number): void => {
+    private validateNumberParam = (number: number): void => {
         if(number < 0){
             throw new RangeError("Parameter can not be a negative number")
         }
