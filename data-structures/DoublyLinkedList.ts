@@ -12,40 +12,70 @@ export default class DoublyLinkedList implements List{
         this.size = 0
     }
 
-    public addToFrontOfTheList = (value: any): void => {
+    public addToFrontOfTheList = (value: number): void => {
+        const node = new DoubleListNode(value)
+
+        this.head.prev = node
+        node.next = this.head 
+        this.head = node 
+        this.size++
+    }
+
+    public addToBackOfTheList = (value: number ): void => {
+        const node = new DoubleListNode(value)
+
+        node.prev = this.tail
+        this.tail = node 
+        this.size++
+    }
+
+    public removeFirstNode = (): DoubleListNode => {
+        const node = this.head 
+
+        this.head = this.head.next
+        this.head.prev = null
+        this.size--
+
+        return node
+    }
+
+    public removeLastNode = (): DoubleListNode => {
+        const node = this.tail 
+
+        this.tail = this.tail.prev
+        this.tail.next = null
+        this.size--
+
+        return node
+    }
+
+    public getFirstNode = (): DoubleListNode => {
+        return this.head
+    }
+
+    public getLastNode = (): DoubleListNode => {
+        return this.tail
+    }
+
+    public getNodeAtIndex = (index: number): DoubleListNode => {
 
     }
 
-    public addToBackOfTheList = (value: any): void => {
+    public removeNodeAtIndex = (index: number): DoubleListNode => {
 
     }
 
-    public removeFirstNode = (params: void): SingleListNode => {
+    //debug tool wont be tested
+    public printList = (): void => {
 
     }
 
-    public removeLastNode = (params: void): SingleListNode => {
+    public insertNodeAtIndex = (inex: number, value: number): void => {
 
     }
 
-    public getFirstNode = (params: void): SingleListNode => {
-
-    }
-
-    public getLastNode = (params: void): SingleListNode => {
-
-    }
-
-    public getNodeAtIndex = (index: number): SingleListNode => {
-
-    }
-
-    public removeNodeAtIndex = (index: number): SingleListNode => {
-
-    }
-
-    public printList = (params: void): void => {
-
+    public getSize = (): number => {
+        return this.size
     }
 
 }

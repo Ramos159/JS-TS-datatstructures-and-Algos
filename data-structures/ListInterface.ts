@@ -4,10 +4,12 @@ export default interface List{
      addToFrontOfTheList(value: any): void
      addToBackOfTheList(value: any): void
      removeFirstNode(params: void): Node
-     removeLastNode(params: void): Node
-     getFirstNode(params: void): Node
-     getLastNode(params: void): Node
+     removeLastNode(): Node
+     getFirstNode(): Node
+     getLastNode(): Node
      getNodeAtIndex(index: number): Node
      removeNodeAtIndex(index: number): Node
-     printList(params: void): void
+     insertNodeAtIndex(index: number, value: number): void
+     printList(): void
+     getSize(): number
 }

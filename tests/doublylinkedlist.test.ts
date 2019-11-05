@@ -25,6 +25,10 @@ describe('DoublyLinkedList',()=>{
             let node: DoubleListNode = new DoubleListNode(1)
             expect(node).toMatchObject({next:null})
         })
+        test('has a prev property that is intialized to null',()=>{
+            let node: DoubleListNode = new DoubleListNode(1)
+            expect(node).toMatchObject({prev:null})
+        })
     })
     describe('addToFrontOfList',()=>{
         test('inserts nodes to the front correctly',()=>{
