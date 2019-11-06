@@ -1,4 +1,4 @@
-export default interface Node {
+export default interface NodeInterface {
     value: number|null
-    next: Node|null
+    next: NodeInterface|null
 }

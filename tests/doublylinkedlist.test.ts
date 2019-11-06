@@ -1,6 +1,9 @@
 import DoublyLinkedList from '../data-structures/DoublyLinkedList'
 import DoubleListNode from '../data-structures/DoubleListNode'
 
+// this is basically just my singlelinked test just changed for double
+// they are 99% identical as structures so why not
+
 describe('DoublyLinkedList',()=>{
     describe('Intialization',()=>{
         test('head is initialized to null',()=>{

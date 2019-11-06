@@ -32,7 +32,7 @@ export default class SinglyLinkedList implements List{
     }
 
     public addToBackOfTheList = (value: number): void => {
-        const node = new SingleListNode(value)
+        const node: SingleListNode = new SingleListNode(value)
         if(this.tail){
             this.tail.next = node
             this.tail = node
@@ -118,7 +118,7 @@ export default class SinglyLinkedList implements List{
             return this.tail
         }
         else {
-            let node = this.head.next
+            let node: SingleListNode = this.head.next
             
             for(let i = 1;i<index;i++){
                 node = node.next
@@ -165,7 +165,7 @@ export default class SinglyLinkedList implements List{
         }
         else{
             // 0 -> 1 -> 2 -> 3 
-            const node = new SingleListNode(value)
+            const node: SingleListNode = new SingleListNode(value)
             let before: SingleListNode = this.head
             let after: SingleListNode = this.head.next
 
@@ -179,7 +179,7 @@ export default class SinglyLinkedList implements List{
         }
     }
     public printList = (): void => {
-        let node = this.head
+        let node: SingleListNode = this.head
         for(let i = 0;i<this.size;i++){
             console.log(`index: ${i}`, node)
             node = node.next
