@@ -12,33 +12,33 @@ export default class DoublyLinkedList implements List{
         this.size = 0
     }
 
-    public addToFrontOfTheList = (value: number): void => {
+    public addToFrontOfList = (value: number): void => {
         const node: DoubleListNode = new DoubleListNode(value)
 
-        if(this.size === 0){
+        if(this.head){
+            node.next = this.head
             this.head = node
-            this.tail = node
             this.size++
         }
         else{
-             this.head.prev = node
-             node.next = this.head 
-             this.head = node 
+             this.head = node
+             this.tail = node
              this.size++
         }
     }
 
-    public addToBackOfTheList = (value: number ): void => {
+    public addToBackOfList = (value: number ): void => {
+
         const node: DoubleListNode = new DoubleListNode(value)
 
-        if(this.size === 0){
-            this.tail = node 
-            this.head = node
+        if(this.tail){
+            this.tail.next = node
+            this.tail = node
             this.size++
         }
         else{
-            node.prev = this.tail
-            this.tail = node 
+            this.head = node
+            this.tail = node
             this.size++
         }
     }
@@ -58,7 +58,6 @@ export default class DoublyLinkedList implements List{
         }
         else{
             const node: DoubleListNode = this.head 
-            console.log(node)
             this.head = this.head.next
             this.head.prev = null
             this.size--
@@ -124,7 +123,7 @@ export default class DoublyLinkedList implements List{
 
         this.validateNumberParam(index)
 
-        if(index == 0){
+        if(index === 0){
             this.removeFirstNode()
         }
         else if(index === this.size - 1){
@@ -132,13 +131,16 @@ export default class DoublyLinkedList implements List{
         }
         else{
             let node: DoubleListNode = this.head
-
-            for(let i = 0;i < index;i++){
+            
+            for(let i = 0; i<index;i++){
                 node = node.next
             }
 
-            node.next.prev = node.prev
-            node.prev.next = node.next
+            let prev: DoubleListNode = node.prev
+            let next: DoubleListNode = node.next
+
+            prev.next = next 
+            next.prev = prev
             this.size --
             
             return node
@@ -150,7 +152,7 @@ export default class DoublyLinkedList implements List{
         let node: DoubleListNode = this.head
 
         for(let i = 1; i < this.size - 1;i++){
-            console.log(node)
+            console.log(node.value)
             node = node.next
         }
     }
@@ -159,10 +161,10 @@ export default class DoublyLinkedList implements List{
 
         this.validateNumberParam(value)
         if(index === 0){
-            this.addToFrontOfTheList(value)
+            this.addToFrontOfList(value)
         }
         else if(index === this.size - 1){
-            this.removeLastNode()
+            this.addToBackOfList(value)
         }
         else{
             const newNode: DoubleListNode = new DoubleListNode(value)

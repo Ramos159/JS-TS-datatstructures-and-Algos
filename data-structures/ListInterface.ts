@@ -1,8 +1,8 @@
 import Node from "./NodeInterface";
 
 export default interface List{
-     addToFrontOfTheList(value: any): void
-     addToBackOfTheList(value: any): void
+     addToFrontOfList(value: any): void
+     addToBackOfList(value: any): void
      removeFirstNode(params: void): Node
      removeLastNode(): Node
      getFirstNode(): Node

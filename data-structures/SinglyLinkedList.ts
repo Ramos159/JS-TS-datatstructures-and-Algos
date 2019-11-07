@@ -16,7 +16,7 @@ export default class SinglyLinkedList implements List{
         return this.size
     }
 
-    public addToFrontOfTheList = (value: number): void =>{
+    public addToFrontOfList = (value: number): void =>{
         const node: SingleListNode = new SingleListNode(value);
 
         if(this.head){
@@ -31,8 +31,9 @@ export default class SinglyLinkedList implements List{
         }
     }
 
-    public addToBackOfTheList = (value: number): void => {
+    public addToBackOfList = (value: number): void => {
         const node: SingleListNode = new SingleListNode(value)
+
         if(this.tail){
             this.tail.next = node
             this.tail = node
@@ -131,7 +132,7 @@ export default class SinglyLinkedList implements List{
 
         this.validateNumberParam(index)
 
-        if(index == 0 ){
+        if(index === 0 ){
             this.removeFirstNode()
         }
         else if(index === this.size -1){
@@ -141,13 +142,13 @@ export default class SinglyLinkedList implements List{
             let nodeToRemove: SingleListNode = this.head.next
             let prevNode: SingleListNode = this.head
             
-            for(let i: number = 1;i == index;i++){
+            for(let i: number = 1;i < index;i++){
                 prevNode = nodeToRemove
                 nodeToRemove = prevNode.next
             }
             prevNode.next = nodeToRemove.next
-            this.size--
             nodeToRemove.next = null
+            this.size--
 
             return nodeToRemove
         }
@@ -158,10 +159,10 @@ export default class SinglyLinkedList implements List{
         this.validateNumberParam(index)
 
         if(index === 0){
-            this.addToFrontOfTheList(value)
+            this.addToFrontOfList(value)
         }
         else if(index === this.size){
-            this.addToBackOfTheList(value)
+            this.addToBackOfList(value)
         }
         else{
             // 0 -> 1 -> 2 -> 3 
@@ -181,7 +182,7 @@ export default class SinglyLinkedList implements List{
     public printList = (): void => {
         let node: SingleListNode = this.head
         for(let i = 0;i<this.size;i++){
-            console.log(`index: ${i}`, node)
+            console.log(`index: ${i} | `, node.value)
             node = node.next
         }
     }
