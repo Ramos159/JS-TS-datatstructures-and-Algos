@@ -5,10 +5,10 @@ If this gets extensive, i might look into just making this a library and use it 
 
 ## Things i plan on implimenting and testing with Jest.js:
 
-1. ~~Singly~~/~~Doubly LinkedLists~~
+1. ~~Singly/Doubly LinkedLists~~
 2. Basic trees
 3. graphs
-4. ~~Stacks~~ and Queues
+4. ~~Stacks and Queues~~
 5. Elementary sorts
 6. merge/quick sort
 7. dfs/bfs
