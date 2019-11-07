@@ -1,5 +1,5 @@
-import DoublyLinkedList from '../data-structures/DoublyLinkedList'
-import DoubleListNode from '../data-structures/DoubleListNode'
+import DoublyLinkedList from '../data-structures/lists/DoublyLinkedList'
+import DoubleListNode from '../data-structures/lists/DoubleListNode'
 
 // this is basically just my singlelinked test just changed for double
 // they are 99% identical as structures so why not
@@ -33,19 +33,19 @@ describe('DoublyLinkedList',()=>{
             expect(node).toMatchObject({prev:null})
         })
     })
-    describe('addToFrontOfList',()=>{
+    describe('addToFrontOfList()',()=>{
         test('inserts nodes to the front correctly',()=>{
             let list: DoublyLinkedList = new DoublyLinkedList()
 
-            list.addToFrontOfTheList(2)
+            list.addToFrontOfList(2)
             let node = list.getFirstNode()
             expect(node.value).toEqual(2)
 
-            list.addToFrontOfTheList(3)
+            list.addToFrontOfList(3)
             node = list.getFirstNode()
             expect(node.value).toEqual(3)
 
-            list.addToFrontOfTheList(25)
+            list.addToFrontOfList(25)
             node = list.getFirstNode()
             expect(node.value).toEqual(25)
 
@@ -53,48 +53,48 @@ describe('DoublyLinkedList',()=>{
         test('increases list size correctly',()=>{
             let list: DoublyLinkedList = new DoublyLinkedList()
 
-            list.addToFrontOfTheList(1)
+            list.addToFrontOfList(1)
             expect(list.getSize()).toEqual(1)
 
-            list.addToFrontOfTheList(2)
+            list.addToFrontOfList(2)
             expect(list.getSize()).toEqual(2)
 
-            list.addToFrontOfTheList(3)
+            list.addToFrontOfList(3)
             expect(list.getSize()).toEqual(3)
         })
     })
-    describe('addToBackOflist',()=>{
-        test('inserts nodes to the back correctly using addToBackOfTheList',()=>{
+    describe('addToBackOflist()',()=>{
+        test('inserts nodes to the back correctly using addToBackOfList',()=>{
             let list: DoublyLinkedList = new DoublyLinkedList()
-            list.addToBackOfTheList(1)
+            list.addToBackOfList(1)
 
-            list.addToBackOfTheList(2)
+            list.addToBackOfList(2)
             let node = list.getLastNode()
             expect(node.value).toEqual(2)
 
-            list.addToBackOfTheList(3)
+            list.addToBackOfList(3)
             node = list.getLastNode()
             expect(node.value).toEqual(3)
 
-            list.addToBackOfTheList(367)
+            list.addToBackOfList(367)
             node = list.getLastNode()
             expect(node.value).toEqual(367)
         })
         test('increases the list size correctly',()=>{
             let list: DoublyLinkedList = new DoublyLinkedList()
-            list.addToBackOfTheList(1)
-            list.addToBackOfTheList(2)
-            list.addToBackOfTheList(3)
+            list.addToBackOfList(1)
+            list.addToBackOfList(2)
+            list.addToBackOfList(3)
             expect(list.getSize()).toEqual(3)
         })
     })
-    describe('removeFirstNode',()=>{
+    describe('removeFirstNode()',()=>{
         test('removes first node on a list correctly',()=>{
             let list: DoublyLinkedList = new DoublyLinkedList()
-            list.addToBackOfTheList(1)
-            list.addToBackOfTheList(2)
-            list.addToBackOfTheList(3)
-            list.addToBackOfTheList(4)
+            list.addToBackOfList(1)
+            list.addToBackOfList(2)
+            list.addToBackOfList(3)
+            list.addToBackOfList(4)
 
             let node = list.removeFirstNode()
             expect(node.value).toEqual(1)
@@ -107,10 +107,10 @@ describe('DoublyLinkedList',()=>{
         })
         test('decreases the list size correctly',()=>{
             let list: DoublyLinkedList = new DoublyLinkedList()
-            list.addToBackOfTheList(1)
-            list.addToBackOfTheList(2)
-            list.addToBackOfTheList(3)
-            list.addToBackOfTheList(4)
+            list.addToBackOfList(1)
+            list.addToBackOfList(2)
+            list.addToBackOfList(3)
+            list.addToBackOfList(4)
 
             let node = list.removeFirstNode()
             expect(list.getSize()).toEqual(3)
@@ -128,13 +128,13 @@ describe('DoublyLinkedList',()=>{
             }).toThrow()
         })
     })
-    describe('removeLastNode',()=>{
+    describe('removeLastNode()',()=>{
         test('removes last node on a list correctly',()=>{
             let list: DoublyLinkedList = new DoublyLinkedList()
-            list.addToBackOfTheList(1)
-            list.addToBackOfTheList(2)
-            list.addToBackOfTheList(3)
-            list.addToBackOfTheList(4)
+            list.addToBackOfList(1)
+            list.addToBackOfList(2)
+            list.addToBackOfList(3)
+            list.addToBackOfList(4)
 
             let node = list.removeLastNode()
             expect(node.value).toEqual(4)
@@ -148,10 +148,10 @@ describe('DoublyLinkedList',()=>{
         })
         test('decreases the list size correctly',()=>{
             let list: DoublyLinkedList = new DoublyLinkedList()
-            list.addToBackOfTheList(1)
-            list.addToBackOfTheList(2)
-            list.addToBackOfTheList(3)
-            list.addToBackOfTheList(4)
+            list.addToBackOfList(1)
+            list.addToBackOfList(2)
+            list.addToBackOfList(3)
+            list.addToBackOfList(4)
 
             let node = list.removeLastNode()
             expect(list.getSize()).toEqual(3)
@@ -169,28 +169,29 @@ describe('DoublyLinkedList',()=>{
             }).toThrow()
         })
     })
-    describe('removeNodeAtIndex',()=>{
+    describe('removeNodeAtIndex()',()=>{
         test('removes correct node based on zero index',()=>{
             let list: DoublyLinkedList = new DoublyLinkedList()
-            list.addToFrontOfTheList(1)
-            list.addToFrontOfTheList(2)
-            list.addToFrontOfTheList(3)
-            list.addToFrontOfTheList(4)
-            list.addToFrontOfTheList(5)
+            list.addToFrontOfList(1)
+            list.addToFrontOfList(2)
+            list.addToFrontOfList(3)
+            list.addToFrontOfList(4)
+            list.addToFrontOfList(5)
+            // 5 -> 4 -> 3 -> 2 -> 1
 
             let node = list.removeNodeAtIndex(3)
-            expect(node.value).toEqual(4)
+            expect(node.value).toEqual(2)
 
             node = list.removeNodeAtIndex(1)
-            expect(node.value).toEqual(2)
+            expect(node.value).toEqual(4)
         })
         test('decreases size of list correctly',()=>{
             let list: DoublyLinkedList = new DoublyLinkedList()
-            list.addToFrontOfTheList(1)
-            list.addToFrontOfTheList(2)
-            list.addToFrontOfTheList(3)
-            list.addToFrontOfTheList(4)
-            list.addToFrontOfTheList(5)
+            list.addToFrontOfList(1)
+            list.addToFrontOfList(2)
+            list.addToFrontOfList(3)
+            list.addToFrontOfList(4)
+            list.addToFrontOfList(5)
 
             list.removeNodeAtIndex(4)
             expect(list.getSize()).toEqual(4)
@@ -209,31 +210,32 @@ describe('DoublyLinkedList',()=>{
         })
         test('throws error when index param goes above size of list',()=>{
             let list: DoublyLinkedList = new DoublyLinkedList()
-            list.addToBackOfTheList(1)
-            list.addToFrontOfTheList(2)
+            list.addToBackOfList(1)
+            list.addToFrontOfList(2)
             expect(()=>{
                 list.removeNodeAtIndex(2)
             }).toThrow()
         })
         test('throws error on negative number index params',()=>{
             let list: DoublyLinkedList = new DoublyLinkedList()
-            list.addToBackOfTheList(1)
+            list.addToBackOfList(1)
             expect(()=>{
                 list.removeNodeAtIndex(-1)
             }).toThrow()
         })
     })
-    describe('insertNodeAtIndex',()=>{
+    describe('insertNodeAtIndex()',()=>{
         test('inserts node correctly based on zero index',()=>{
             let list: DoublyLinkedList = new DoublyLinkedList()
             // adding nodes for test
-            list.addToBackOfTheList(1)
-            list.addToBackOfTheList(2)
-            list.addToBackOfTheList(3)
-            list.addToBackOfTheList(4)
-            list.addToBackOfTheList(5)
+            list.addToBackOfList(1)
+            list.addToBackOfList(2)
+            list.addToBackOfList(3)
+            list.addToBackOfList(4)
+            list.addToBackOfList(5) 
 
             list.insertNodeAtIndex(4,6)
+            
             let node = list.getNodeAtIndex(4)
             expect(node.value).toEqual(6)
 
@@ -270,8 +272,8 @@ describe('DoublyLinkedList',()=>{
         })
         test('throws error when index param goes above size of list',()=>{
             let list: DoublyLinkedList = new DoublyLinkedList()
-            list.addToBackOfTheList(1)
-            list.addToFrontOfTheList(2)
+            list.addToBackOfList(1)
+            list.addToFrontOfList(2)
 
             expect(()=>{
                 list.insertNodeAtIndex(2,3)
@@ -279,7 +281,7 @@ describe('DoublyLinkedList',()=>{
         })
         test('throws error on negative number index params',()=>{
             let list: DoublyLinkedList = new DoublyLinkedList()
-            list.addToBackOfTheList(1)
+            list.addToBackOfList(1)
 
             expect(()=>{
                 list.getNodeAtIndex(-1)
