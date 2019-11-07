@@ -40,6 +40,13 @@ describe('Stack',()=>{
             stack.pop()
             expect(stack.getCurrentStack().indexOf(2)).toEqual(-1)
         })
+        test('throw an error when it used on an empty stack',()=>{
+            const stack: Stack = new Stack()
+
+            expect(()=>{
+                stack.pop()
+            }).toThrow()
+        })
     })
     describe('push()',()=>{
         test('inserts value to the last position',()=>{
@@ -93,6 +100,17 @@ describe('Stack',()=>{
             stack.push(5)
 
             expect(stack.getCurrentStack()).toEqual([1,2,3,4,5])
+        })
+    })
+    describe('empty()',()=>{
+        test('return a boolean to indicate if the stack is empty or not',()=>{
+            let stack: Stack = new Stack()
+
+            expect(stack.empty()).toEqual(true)
+    
+            stack.push(1)
+    
+            expect(stack.empty()).toEqual(false)
         })
     })
 })

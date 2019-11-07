@@ -20,15 +20,14 @@ export default class Stack {
     }
 
     public peek = (): number | null => {
-       if(this.body.length > 0){
-            return this.body[this.body.length-1]
-       }
-       else{
-            return null
-       }
+        return this.body.length === 0 ? null : this.body[this.body.length-1]
     }
 
     public getCurrentStack = (): Array<number> => {
         return this.body
+    }
+
+    public empty = (): boolean => {
+        return this.body.length === 0 ? true : false
     }
 }
