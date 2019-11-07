@@ -15,14 +15,21 @@ export default class DoublyLinkedList implements List{
     public addToFrontOfList = (value: number): void => {
         const node: DoubleListNode = new DoubleListNode(value)
 
-        if(this.head){
-            node.next = this.head
+        if(this.size === 0){
             this.head = node
+            this.tail = node
+            this.size++
+        }
+        else if(this.size === 1){
+            this.head = node
+            this.head.next = this.tail
+            this.tail.prev = this.head
             this.size++
         }
         else{
+             node.next = this.head
+             this.head.prev = node
              this.head = node
-             this.tail = node
              this.size++
         }
     }
@@ -31,15 +38,22 @@ export default class DoublyLinkedList implements List{
 
         const node: DoubleListNode = new DoubleListNode(value)
 
-        if(this.tail){
-            this.tail.next = node
-            this.tail = node
-            this.size++
-        }
-        else{
+        if(this.size===0){
             this.head = node
             this.tail = node
             this.size++
+        }
+        else if(this.size === 1){
+            this.head.next = node
+            this.tail = node
+            this.tail.prev = this.head
+            this.size++
+        }
+        else{
+            this.tail.next = node
+            node.prev = this.tail
+            this.tail = node 
+            this.size ++
         }
     }
 
@@ -58,6 +72,7 @@ export default class DoublyLinkedList implements List{
         }
         else{
             const node: DoubleListNode = this.head 
+
             this.head = this.head.next
             this.head.prev = null
             this.size--
@@ -133,6 +148,7 @@ export default class DoublyLinkedList implements List{
             let node: DoubleListNode = this.head
             
             for(let i = 0; i<index;i++){
+
                 node = node.next
             }
 
@@ -151,19 +167,22 @@ export default class DoublyLinkedList implements List{
     public printList = (): void => {
         let node: DoubleListNode = this.head
 
-        for(let i = 1; i < this.size - 1;i++){
+        while(node !== null){
             console.log(node.value)
+            console.log(node.next)
             node = node.next
         }
     }
 
     public insertNodeAtIndex = (index: number, value: number): void => {
 
-        this.validateNumberParam(value)
+        this.validateNumberParam(index)
+
         if(index === 0){
             this.addToFrontOfList(value)
         }
-        else if(index === this.size - 1){
+        else if(index === this.size){
+            console.log('went to the back')
             this.addToBackOfList(value)
         }
         else{
@@ -175,6 +194,7 @@ export default class DoublyLinkedList implements List{
             }
 
             newNode.prev = node.prev
+            node.prev.next = newNode
             newNode.next = node
             node.prev = newNode
             this.size++
@@ -193,8 +213,10 @@ export default class DoublyLinkedList implements List{
         else if(typeof number !== "number"){
             throw new TypeError("Parameter must be a number")
         }
-        // value exceeds size and size isn't 0,
-        else if(number > this.size-1 && this.size !== 0){
+        // if number is over size
+        else if(number > this.size - 1 && this.size !== 0){
+            // console.log(number)
+            // console.log(this.size)
             throw new RangeError("value paramater exceeds list length")
         }
     }

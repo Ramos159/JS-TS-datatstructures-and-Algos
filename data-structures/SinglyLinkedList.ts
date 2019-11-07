@@ -196,7 +196,7 @@ export default class SinglyLinkedList implements List{
             throw new TypeError("Parameter must be a number")
         }
         // value exceeds size and size isn't 0,
-        else if(number > this.size-1 && this.size !== 0){
+        else if(this.size !== 0 && number > this.size-1){
             throw new RangeError("value paramater exceeds list length")
         }
     }
