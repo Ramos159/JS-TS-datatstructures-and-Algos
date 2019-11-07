@@ -23,11 +23,23 @@ export default class Stack {
         return this.body.length === 0 ? null : this.body[this.body.length-1]
     }
 
-    public getCurrentStack = (): Array<number> => {
-        return this.body
-    }
-
     public empty = (): boolean => {
         return this.body.length === 0 ? true : false
+    }
+
+    public includes = (value: number): boolean => {
+        let answer: boolean = false
+
+        this.body.forEach(number=>{
+            if(number === value){
+                answer = true
+            }
+        })
+
+        return answer
+    }
+
+    public size = (): number => {
+        return this.body.length
     }
 }

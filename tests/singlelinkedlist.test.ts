@@ -280,4 +280,18 @@ describe('SinglyLinkedList',()=>{
             }).toThrow()
         })
     })
+    describe('getSize()',()=>{
+        test('correctly gets size of list',()=>{
+            let list: SinglyLinkedList = new SinglyLinkedList()
+
+            expect(list.getSize()).toEqual(0)
+
+            list.addToFrontOfList(1)
+            list.addToFrontOfList(1)
+            list.addToFrontOfList(1)
+            list.addToFrontOfList(1)
+
+            expect(list.getSize()).toEqual(4)
+        })
+    })
 })

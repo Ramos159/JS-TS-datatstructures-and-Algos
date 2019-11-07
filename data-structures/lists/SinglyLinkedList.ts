@@ -179,6 +179,7 @@ export default class SinglyLinkedList implements List{
             this.size ++
         }
     }
+    // debugging tool
     public printList = (): void => {
         let node: SingleListNode = this.head
         for(let i = 0;i<this.size;i++){

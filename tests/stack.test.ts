@@ -6,7 +6,7 @@ describe('Stack',()=>{
     describe('Initialization',()=>{
         test('Stack is intialized with an empty array',()=>{
             const stack: Stack = new Stack()
-            expect(stack.getCurrentStack().length).toEqual(0)
+            expect(stack.size()).toEqual(0)
         })
     })
     describe('Pop()',()=>{
@@ -35,10 +35,10 @@ describe('Stack',()=>{
             stack.pop()
 
             // wanted to use includes, but doesnt work for some reason. 
-            expect(stack.getCurrentStack().indexOf(3)).toEqual(-1)
+            expect(stack.includes(3)).toEqual(false)
 
             stack.pop()
-            expect(stack.getCurrentStack().indexOf(2)).toEqual(-1)
+            expect(stack.includes(2)).toEqual(false)
         })
         test('throw an error when it used on an empty stack',()=>{
             const stack: Stack = new Stack()
@@ -86,22 +86,22 @@ describe('Stack',()=>{
             stack.push(56)
 
             expect(stack.peek()).toBe(56)
-            expect(stack.getCurrentStack().indexOf(56)).toEqual(2)
+            expect(stack.includes(56)).toEqual(true)
         })
     })
-    describe('getCurrentStack()',()=>{
-        test('returns a copy of the current stack',()=>{
-            let stack: Stack = new Stack()
+    // describe('getCurrentStack()',()=>{
+    //     test('returns a copy of the current stack',()=>{
+    //         let stack: Stack = new Stack()
 
-            stack.push(1)
-            stack.push(2)
-            stack.push(3)
-            stack.push(4)
-            stack.push(5)
+    //         stack.push(1)
+    //         stack.push(2)
+    //         stack.push(3)
+    //         stack.push(4)
+    //         stack.push(5)
 
-            expect(stack.getCurrentStack()).toEqual([1,2,3,4,5])
-        })
-    })
+    //         expect(stack.getCurrentStack()).toEqual([1,2,3,4,5])
+    //     })
+    // })
     describe('empty()',()=>{
         test('return a boolean to indicate if the stack is empty or not',()=>{
             let stack: Stack = new Stack()
@@ -111,6 +111,36 @@ describe('Stack',()=>{
             stack.push(1)
     
             expect(stack.empty()).toEqual(false)
+        })
+    })
+    describe('includes()',()=>{
+        test('returns a boolean depending if a number is found within the stack or not',()=>{
+            let stack: Stack = new Stack()
+
+            stack.push(1)
+            stack.push(3)
+            stack.push(5)
+
+            expect(stack.includes(5)).toEqual(true)
+            expect(stack.includes(6)).toEqual(false)
+        })
+    })
+    describe('size()',()=>{
+        test('returns the size of the list accurately',()=>{
+            let stack: Stack = new Stack()
+
+            stack.push(2)
+
+            expect(stack.size()).toEqual(1)
+
+            stack.push(4)
+
+            expect(stack.size()).toEqual(2)
+
+            stack.pop()
+            stack.pop()
+
+            expect(stack.size()).toEqual(0)
         })
     })
 })
