@@ -1,14 +1,18 @@
 import SinglyLinkedList from '../data-structures/lists/SinglyLinkedList'
 import SingleListNode from '../data-structures/lists/SingleListNode'
 
+let list: SinglyLinkedList = new SinglyLinkedList
+
+beforeEach(()=>{
+    list = new SinglyLinkedList()
+})
+
 describe('SinglyLinkedList',()=>{
     describe('Intialization',()=>{
         test('head is initialized to null',()=>{
-            let list: SinglyLinkedList = new SinglyLinkedList()
             expect(list.getFirstNode()).toEqual(null)
         })
         test('tail is intialized to null',()=>{
-            let list: SinglyLinkedList = new SinglyLinkedList()
             expect(list.getLastNode()).toEqual(null)
         })
         test('list size is initialized to 0',()=>{
@@ -28,8 +32,6 @@ describe('SinglyLinkedList',()=>{
     })
     describe('addToFrontOfList()',()=>{
         test('inserts nodes to the front correctly',()=>{
-            let list: SinglyLinkedList = new SinglyLinkedList()
-
             list.addToFrontOfList(2)
             let node = list.getFirstNode()
             expect(node.value).toEqual(2)
@@ -44,8 +46,6 @@ describe('SinglyLinkedList',()=>{
 
         })
         test('increases list size correctly',()=>{
-            let list: SinglyLinkedList = new SinglyLinkedList()
-
             list.addToFrontOfList(1)
             expect(list.getSize()).toEqual(1)
 
@@ -58,7 +58,6 @@ describe('SinglyLinkedList',()=>{
     })
     describe('addToBackOflist()',()=>{
         test('inserts nodes to the back correctly using addToBackOfList',()=>{
-            let list: SinglyLinkedList = new SinglyLinkedList()
             list.addToBackOfList(1)
 
             list.addToBackOfList(2)
@@ -74,7 +73,6 @@ describe('SinglyLinkedList',()=>{
             expect(node.value).toEqual(367)
         })
         test('increases the list size correctly',()=>{
-            let list: SinglyLinkedList = new SinglyLinkedList()
             list.addToBackOfList(1)
             list.addToBackOfList(2)
             list.addToBackOfList(3)
@@ -83,7 +81,6 @@ describe('SinglyLinkedList',()=>{
     })
     describe('removeFirstNode()',()=>{
         test('removes first node on a list correctly',()=>{
-            let list: SinglyLinkedList = new SinglyLinkedList()
             list.addToBackOfList(1)
             list.addToBackOfList(2)
             list.addToBackOfList(3)
@@ -99,7 +96,6 @@ describe('SinglyLinkedList',()=>{
             expect(node.value).toEqual(3)
         })
         test('decreases the list size correctly',()=>{
-            let list: SinglyLinkedList = new SinglyLinkedList()
             list.addToBackOfList(1)
             list.addToBackOfList(2)
             list.addToBackOfList(3)
@@ -115,7 +111,6 @@ describe('SinglyLinkedList',()=>{
             expect(list.getSize()).toEqual(1)
         })
         test('throws an error if the list is empty',()=>{
-            let list: SinglyLinkedList = new SinglyLinkedList()
             expect(()=>{
                 list.removeFirstNode()
             }).toThrow()
@@ -123,7 +118,6 @@ describe('SinglyLinkedList',()=>{
     })
     describe('removeLastNode()',()=>{
         test('removes last node on a list correctly',()=>{
-            let list: SinglyLinkedList = new SinglyLinkedList()
             list.addToBackOfList(1)
             list.addToBackOfList(2)
             list.addToBackOfList(3)
@@ -140,7 +134,6 @@ describe('SinglyLinkedList',()=>{
 
         })
         test('decreases the list size correctly',()=>{
-            let list: SinglyLinkedList = new SinglyLinkedList()
             list.addToBackOfList(1)
             list.addToBackOfList(2)
             list.addToBackOfList(3)
@@ -156,7 +149,6 @@ describe('SinglyLinkedList',()=>{
             expect(list.getSize()).toEqual(1)
         })
         test('throws an error if the list is empty',()=>{
-            let list: SinglyLinkedList = new SinglyLinkedList()
             expect(()=>{
                 list.removeLastNode()
             }).toThrow()
@@ -164,22 +156,19 @@ describe('SinglyLinkedList',()=>{
     })
     describe('removeNodeAtIndex()',()=>{
         test('removes correct node based on zero index',()=>{
-            let list: SinglyLinkedList = new SinglyLinkedList()
             list.addToBackOfList(1)
             list.addToBackOfList(2)
             list.addToBackOfList(3)
             list.addToBackOfList(4)
             list.addToBackOfList(5)
-            // 1 -> 2 -> 3 -> 4 -> 5
 
             let node = list.removeNodeAtIndex(3)
             expect(node.value).toEqual(4)
 
-            // node = list.removeNodeAtIndex(1)
-            // expect(node.value).toEqual(4)
+            node = list.removeNodeAtIndex(1)
+            expect(node.value).toEqual(2)
         })
         test('decreases size of list correctly',()=>{
-            let list: SinglyLinkedList = new SinglyLinkedList()
             list.addToBackOfList(1)
             list.addToBackOfList(2)
             list.addToBackOfList(3)
@@ -196,13 +185,11 @@ describe('SinglyLinkedList',()=>{
             expect(list.getSize()).toEqual(2)
         })
         test('throws error when used on empty list',()=>{
-            let list: SinglyLinkedList = new SinglyLinkedList()
             expect(()=>{
                 list.removeNodeAtIndex(1)
             }).toThrow()
         })
         test('throws error when index param goes above size of list',()=>{
-            let list: SinglyLinkedList = new SinglyLinkedList()
             list.addToBackOfList(1)
             list.addToBackOfList(2)
             expect(()=>{
@@ -210,7 +197,6 @@ describe('SinglyLinkedList',()=>{
             }).toThrow()
         })
         test('throws error on negative number index params',()=>{
-            let list: SinglyLinkedList = new SinglyLinkedList()
             list.addToBackOfList(1)
             expect(()=>{
                 list.removeNodeAtIndex(-1)
@@ -219,8 +205,6 @@ describe('SinglyLinkedList',()=>{
     })
     describe('insertNodeAtIndex()',()=>{
         test('inserts node correctly based on zero index',()=>{
-            let list: SinglyLinkedList = new SinglyLinkedList()
-            // adding nodes for test
             list.addToBackOfList(1)
             list.addToBackOfList(2)
             list.addToBackOfList(3)
@@ -241,7 +225,6 @@ describe('SinglyLinkedList',()=>{
 
         })
         test('increases size of list correctly',()=>{
-            let list: SinglyLinkedList = new SinglyLinkedList()
             list.insertNodeAtIndex(0,40)
             expect(list.getSize()).toEqual(1)
 
@@ -256,14 +239,11 @@ describe('SinglyLinkedList',()=>{
             expect(list.getSize()).toEqual(5)
         })
         test('works when used on empty list',()=>{
-            let list: SinglyLinkedList = new SinglyLinkedList()
-
             expect(()=>{
                 list.insertNodeAtIndex(0,1)
             }).not.toThrow()
         })
         test('throws error when index param goes above size of list',()=>{
-            let list: SinglyLinkedList = new SinglyLinkedList()
             list.addToBackOfList(1)
             list.addToBackOfList(2)
 
@@ -272,7 +252,6 @@ describe('SinglyLinkedList',()=>{
             }).toThrow()
         })
         test('throws error on negative number index params',()=>{
-            let list: SinglyLinkedList = new SinglyLinkedList()
             list.addToBackOfList(1)
 
             expect(()=>{
@@ -282,8 +261,6 @@ describe('SinglyLinkedList',()=>{
     })
     describe('getSize()',()=>{
         test('correctly gets size of list',()=>{
-            let list: SinglyLinkedList = new SinglyLinkedList()
-
             expect(list.getSize()).toEqual(0)
 
             list.addToFrontOfList(1)

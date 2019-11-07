@@ -13,8 +13,13 @@ export default class Queue {
         this.body.addToBackOfList(value)
     }
 
-    public pop = (): SingleListNode => {
-        return this.body.removeFirstNode()
+    public pop = (): number => {
+        try{
+            return this.body.removeFirstNode().value
+        }
+        catch(error){
+            return null
+        }
     }
 
     public size = (): number => {
@@ -25,8 +30,8 @@ export default class Queue {
         return this.body.getSize() === 0 ? true : false
     }
 
-    public peek = ():SingleListNode => {
-        return this.body.getFirstNode()
+    public peek = (): number => {
+        return this.body.getFirstNode().value
     }
 
     public includes = (value: number): boolean => {

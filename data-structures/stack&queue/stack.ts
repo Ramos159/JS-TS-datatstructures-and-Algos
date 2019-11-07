@@ -11,7 +11,7 @@ export default class Stack {
             return this.body.pop()
         }
         else{
-            throw new Error('Stack is Empty, can not pop()')
+            return null
         }
     }
 
