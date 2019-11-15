@@ -6,12 +6,11 @@ If this gets extensive, i might look into just making this a library and use it 
 ## Things I plan on implimenting and testing with Jest.js:
 
 1. ~~Singly/Doubly LinkedLists~~
-2. ~~Binary Search trees~~
-3. Graphs
+2. ~~Binary Search trees~~ with dfs and bfs
+3. Graphs with dfs and bfs
 4. ~~Stacks and Queues~~
 5. Elementary sort functions
 6. merge/quick sort functions
-7. dfs/bfs functions for trees and graphs
 
 ## If for some weird reason you want to clone this and use it
 1. be sure to have yarn installed 
