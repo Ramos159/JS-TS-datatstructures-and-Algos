@@ -3,14 +3,14 @@ This is really just for me to impliment common data structures/algos in TS for p
 If this gets extensive, i might look into just making this a library and use it myself. 
 
 
-## Things i plan on implimenting and testing with Jest.js:
+## Things I plan on implimenting and testing with Jest.js:
 
 1. ~~Singly/Doubly LinkedLists~~
-2. Basic trees
-3. graphs
+2. ~~Basic trees~~
+3. Graphs
 4. ~~Stacks and Queues~~
-5. Elementary sorts
-6. merge/quick sort
+5. Elementary sort functions
+6. merge/quick sort functions
 7. dfs/bfs
 
 ## If for some weird reason you want to clone this and use it
