@@ -6,7 +6,7 @@ If this gets extensive, i might look into just making this a library and use it 
 ## Things I plan on implimenting and testing with Jest.js:
 
 1. ~~Singly/Doubly LinkedLists~~
-2. ~~Basic trees~~
+2. ~~Binary Search trees~~
 3. Graphs
 4. ~~Stacks and Queues~~
 5. Elementary sort functions
