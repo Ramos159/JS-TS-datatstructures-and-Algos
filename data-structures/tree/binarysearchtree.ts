@@ -136,7 +136,7 @@ export default class BinarySearchTree {
         if(node.right){
             this.traverseInorder(node.left,arr)
         }
-        return list 
+        return arr
     }
 
     private traversePostorder = (node: Node, arr: Array<number>) => {
@@ -147,7 +147,7 @@ export default class BinarySearchTree {
             this.traverseInorder(node.left,arr)
         }
         arr.push(node.value)
-        return list 
+        return arr
     }
 
     private traversePreorder = (node: Node,arr: Array<number>) => {
@@ -158,7 +158,7 @@ export default class BinarySearchTree {
         if(node.right){
             this.traverseInorder(node.left,arr)
         }
-        return list 
+        return arr
     }
 
     private checkArg = (arg: string) => {
