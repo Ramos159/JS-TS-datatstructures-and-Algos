@@ -1,6 +1,5 @@
 import Node from './binarysearchtreenode'
 import Queue from '../stack&queue/queue'
-import Stack from '../stack&queue/stack'
 
 export default class BinarySearchTree {
     private root: Node | null
