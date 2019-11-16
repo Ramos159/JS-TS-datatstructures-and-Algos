@@ -1,4 +1,6 @@
 import Node from './binarysearchtreenode'
+import Queue from '../stack&queue/queue'
+import Stack from '../stack&queue/stack'
 
 export default class BinarySearchTree {
     private root: Node | null
@@ -84,6 +86,84 @@ export default class BinarySearchTree {
             else{
                 return false
             }
+        }
+    }
+
+    public bfs = (): Array<number> => {
+       let node: Node = this.root
+       let queue: Queue = New Queue()
+       let arr = []
+
+       queue.push(this.root)
+
+       while(!queue.empty()){
+            arr.push(node.value)
+
+            if(node.left){
+                queue.push(node.left)
+            }
+            if(node.right){
+                queue.push(node.right)
+            }
+
+            queue.pop()
+       }
+       return arr
+    }
+
+    public dfs = (arg: string): Array<number> => {
+        this.checkArg(arg)
+
+        let node: Node = this.root
+        let stack: Stack = new Stack()
+
+        if(arg.toLowerCase() === 'inorder'){
+            return traverseInorder(node,stack,arr)
+        }
+        else if(arg.toLowerCase() === 'postorder'){
+            return traversePostorder(node,stack,arr)
+        }
+        else if(arg.toLowerCase() === 'preorder'){
+            return traversePreorder(node,stack,arr)
+        }
+    }
+
+    private traverseInorder = (node: Node, arr: Array<number>) => {
+        if(node.left){
+            this.traverseInorder(node.left,arr)
+        }
+        arr.push(node.value)
+        if(node.right){
+            this.traverseInorder(node.left,arr)
+        }
+        return list 
+    }
+
+    private traversePostorder = (node: Node, arr: Array<number>) => {
+        if(node.left){
+            this.traverseInorder(node.left,arr)
+        }
+        if(node.right){
+            this.traverseInorder(node.left,arr)
+        }
+        arr.push(node.value)
+        return list 
+    }
+
+    private traversePreorder = (node: Node,arr: Array<number>) => {
+        arr.push(node.value)
+        if(node.left){
+            this.traverseInorder(node.left,arr)
+        }
+        if(node.right){
+            this.traverseInorder(node.left,arr)
+        }
+        return list 
+    }
+
+    private checkArg = (arg: string) => {
+        if(arg.toLowerCase() !== 'inorder' || arg.toLowerCase() !== 'postorder' || arg.toLowerCase() !== 'preorder'){
+            throw new Error('Invalid Arguement for dfs()')
         }
     }
 }
