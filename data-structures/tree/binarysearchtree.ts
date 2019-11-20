@@ -89,15 +89,15 @@ export default class BinarySearchTree {
     }
 
     public bfs = (): Array<number> => {
-       let node: Node = this.root
-       let queue: Queue = New Queue()
-       let arr = []
+       let node: any = null
+       let queue: Queue = new Queue()
+       let arr: Array<number> = []
 
        queue.push(this.root)
+       node = queue.pop()
 
-       while(!queue.empty()){
+       while(node){
             arr.push(node.value)
-
             if(node.left){
                 queue.push(node.left)
             }
@@ -105,7 +105,7 @@ export default class BinarySearchTree {
                 queue.push(node.right)
             }
 
-            queue.pop()
+            node = queue.pop()
        }
        return arr
     }
@@ -113,17 +113,17 @@ export default class BinarySearchTree {
     public dfs = (arg: string): Array<number> => {
         this.checkArg(arg)
 
+        let arr: Array<number> = []
         let node: Node = this.root
-        let stack: Stack = new Stack()
 
         if(arg.toLowerCase() === 'inorder'){
-            return traverseInorder(node,stack,arr)
+            return this.traverseInorder(node,arr)
         }
         else if(arg.toLowerCase() === 'postorder'){
-            return traversePostorder(node,stack,arr)
+            return this.traversePostorder(node,arr)
         }
         else if(arg.toLowerCase() === 'preorder'){
-            return traversePreorder(node,stack,arr)
+            return this.traversePreorder(node,arr)
         }
     }
 
@@ -133,17 +133,17 @@ export default class BinarySearchTree {
         }
         arr.push(node.value)
         if(node.right){
-            this.traverseInorder(node.left,arr)
+            this.traverseInorder(node.right,arr)
         }
         return arr
     }
 
     private traversePostorder = (node: Node, arr: Array<number>) => {
         if(node.left){
-            this.traverseInorder(node.left,arr)
+            this.traversePostorder(node.left,arr)
         }
         if(node.right){
-            this.traverseInorder(node.left,arr)
+            this.traversePostorder(node.right,arr)
         }
         arr.push(node.value)
         return arr
@@ -152,16 +152,19 @@ export default class BinarySearchTree {
     private traversePreorder = (node: Node,arr: Array<number>) => {
         arr.push(node.value)
         if(node.left){
-            this.traverseInorder(node.left,arr)
+            this.traversePreorder(node.left,arr)
         }
         if(node.right){
-            this.traverseInorder(node.left,arr)
+            this.traversePreorder(node.right,arr)
         }
         return arr
     }
 
     private checkArg = (arg: string) => {
-        if(arg.toLowerCase() !== 'inorder' || arg.toLowerCase() !== 'postorder' || arg.toLowerCase() !== 'preorder'){
+        if(arg.toLowerCase() === 'inorder' || arg.toLowerCase() === 'postorder' || arg.toLowerCase() === 'preorder'){
+            
+        }
+        else{
             throw new Error('Invalid Arguement for dfs()')
         }
     }

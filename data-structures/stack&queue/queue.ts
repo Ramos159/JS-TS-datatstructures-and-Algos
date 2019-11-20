@@ -1,5 +1,6 @@
 import SinglyLinkedList from'../lists/SinglyLinkedList'
 import SingleListNode from '../lists/SingleListNode'
+import BSTNode from '../tree/binarysearchtreenode'
 
 export default class Queue {
 
@@ -9,11 +10,11 @@ export default class Queue {
         this.body = new SinglyLinkedList()
     }
 
-    public push = (value: number): void => {
+    public push = (value: number | BSTNode): void => {
         this.body.addToBackOfList(value)
     }
 
-    public pop = (): number => {
+    public pop = (): number | BSTNode => {
         try{
             return this.body.removeFirstNode().value
         }
@@ -30,7 +31,7 @@ export default class Queue {
         return this.body.getSize() === 0 ? true : false
     }
 
-    public peek = (): number => {
+    public peek = (): number | BSTNode => {
         return this.body.getFirstNode().value
     }
 

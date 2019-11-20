@@ -1,8 +1,8 @@
 export default class SingleListNode{
-    public value: number| null
-    public next: SingleListNode | null
+    public value: any
+    public next: any
 
-    public constructor(value: number){
+    public constructor(value: any){
         this.value = value
         this.next = null
     }

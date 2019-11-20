@@ -1,4 +1,6 @@
-export default class BinarySearchTreeNode {
+import NodeInterface from '../lists/NodeInterface'
+
+export default class BinarySearchTreeNode implements NodeInterface {
     public value: number | null
     public left: BinarySearchTreeNode | null
     public right: BinarySearchTreeNode | null

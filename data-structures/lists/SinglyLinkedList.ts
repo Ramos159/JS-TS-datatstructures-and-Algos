@@ -1,4 +1,5 @@
 import SingleListNode from "./SingleListNode";
+import BSTNode from '../tree/binarysearchtreenode'
 import List from "./ListInterface"
 
 export default class SinglyLinkedList implements List{
@@ -16,7 +17,7 @@ export default class SinglyLinkedList implements List{
         return this.size
     }
 
-    public addToFrontOfList = (value: number): void =>{
+    public addToFrontOfList = (value: number | BSTNode): void =>{
         const node: SingleListNode = new SingleListNode(value);
 
         if(this.head){
@@ -31,7 +32,7 @@ export default class SinglyLinkedList implements List{
         }
     }
 
-    public addToBackOfList = (value: number): void => {
+    public addToBackOfList = (value: number | BSTNode): void => {
         const node: SingleListNode = new SingleListNode(value)
 
         if(this.tail){
