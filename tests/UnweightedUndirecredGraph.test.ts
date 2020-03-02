@@ -1,9 +1,9 @@
-import UnweightedUndirectedGraph from '../data-structures/graphs/unweightedundirectedgraph'
+import UWUDGraph from '../data-structures/graphs/UnweightedUndirectedGraph'
 
-let Graph: UnweightedUndirectedGraph = new UnweightedUndirectedGraph()
+let Graph: UWUDGraph = new UWUDGraph()
 
 beforeEach(()=>{
-    Graph = new UnweightedUndirectedGraph()
+    Graph = new UWUDGraph()
 })
 
 describe('Unweighted Undirected Graph',()=>{
