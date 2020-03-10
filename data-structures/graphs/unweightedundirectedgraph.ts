@@ -1,4 +1,4 @@
-import GraphInterface,{ VertexObject } from './GraphInterface'
+import GraphInterface,{ VerticeObject } from './GraphInterface'
 
 export default class UnweightedUndirectedGraph implements GraphInterface{
 
@@ -24,7 +24,7 @@ export default class UnweightedUndirectedGraph implements GraphInterface{
     }
 
     // add a vertex to the graph
-    addVertex = (value: number): boolean => {
+    addVertice = (value: number): boolean => {
 
         // check for duplicate key, throw error if it has a duplicate
         if(this.adjList.has(value)){
@@ -43,6 +43,11 @@ export default class UnweightedUndirectedGraph implements GraphInterface{
     // add an edge to our graph
     addEdge = (src: number,dest:number): boolean => {
 
+        // they might send the same nodes to be added together, return false cause thats not legal
+        if(src === dest){
+            throw new Error("A vertice cant have an edge with itself")
+        }
+
         // check if this edge exists
         // this condition will check one vertice to check if it has the edge already
         // we only need to check one vertice since we always add them both at the same time to each list
@@ -53,9 +58,9 @@ export default class UnweightedUndirectedGraph implements GraphInterface{
             // this is undirected so add the edge to both
             this.adjList.get(src).push(dest)
             this.adjList.get(dest).push(src)
-
-            // add two to numberOfEdges to keep track
-            this.numberOfEdges += 2
+            console.log("LIST",this.adjList)
+            // add one to numberOfEdges to keep track
+            this.numberOfEdges += 1
 
             // return true to let user know operation was successful
             return true
@@ -65,12 +70,66 @@ export default class UnweightedUndirectedGraph implements GraphInterface{
         throw new Error("Edge already exists on graph")
     }
 
-    getVertex = (value: number): VertexObject => {
-        // to be implimented soon
+    getVertice = (src: number): VerticeObject => {
+        const ref = this.adjList.get(src)
+        console.log("REF",ref)
+        if(ref){
+            // vertex object
+            return {
+                value: src,
+                adjacencies: ref
+            }
+        }
+
+        throw new Error("Requested Vertex doesn't Exist!")
     }
 
     edgeExists = (v1: number,v2: number): boolean => {
-        // to be implimented soon
+        const v1Vertex = this.adjList.get(v1)
+
+        // if v1vertex array contains the requested edge it won't be -1
+        if(v1Vertex.indexOf(v2) !== -1){
+            return true
+        }
+
+        return false
+    }
+
+    removeEdge = (v1: number,v2: number): boolean => {
+        const v1Vertex = this.adjList.get(v1)
+        const v2Vertex = this.adjList.get(v2)
+
+        v1Vertex.splice(v1Vertex.indexOf(v2)) 
+        v2Vertex.splice(v2Vertex.indexOf(v1))
+
+        // make sure both items are removed from each list
+        if(v1Vertex.indexOf(v2) === -1 && v2Vertex.indexOf(v1) === -1){
+            this.numberOfEdges --
+            return true
+        }
+
+        return false
+    }
+
+    removeVertice = (src: number): boolean => {
+
+        // will return true if is successful
+        if(this.adjList.delete(src)){
+            this.numberOfVertices --
+            return true
+        }
+
+        return false
+    }
+
+    bfs = (): Array<number> => {
+        // implimentation soon
+        return [1]
+    }
+
+    dfs = (): Array<number> => {
+        // implimentation soon
+        return [1]
     }
 
     // print graph for debug purposes

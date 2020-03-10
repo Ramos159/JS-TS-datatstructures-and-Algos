@@ -1,13 +1,17 @@
 export default interface GraphInterface{
     getNumberOfVertices(): number
     getNumberOfEdges(): number
-    addVertex(value: number): boolean
+    addVertice(value: number): boolean
     addEdge(src: number,dest: number): boolean
-    getVertex(id: number): VertexObject
+    getVertice(id: number): VerticeObject
     edgeExists(v1: number,v2: number): boolean
+    removeEdge(v1: number, v2: number): boolean
+    removeVertice(src: number): boolean
+    bfs(): Array<number>
+    dfs(): Array<number>
 }
 
-export type VertexObject = {
+export type VerticeObject = {
     value: number,
     adjacencies: Array<number>
 }
